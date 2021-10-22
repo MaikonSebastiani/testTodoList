@@ -1,7 +1,7 @@
 import React, {
   useCallback, useEffect, useState, useRef,
 } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
@@ -71,7 +71,7 @@ const TodoList: React.FC = () => {
   return (
     <Container>
       <h1>
-        Tarafedas de
+        Tarefas de
         {' '}
         {nameUser}
       </h1>
@@ -105,6 +105,8 @@ const TodoList: React.FC = () => {
           </TodoContent>
         </TodoBox>
       )) }
+
+      <Link to="/" className="back">Voltar</Link>
     </Container>
   );
 };

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     max-width: 933px;
     margin: 0 auto;
+    padding: 25px 0;
 
     h1 {
         text-align:  center;
@@ -13,6 +14,18 @@ export const Container = styled.div`
         align-items: baseline;
         justify-content:  center;
         margin-bottom: 15px;
+    }
+    .back {
+        display: block;
+        margin-left: 15px;
+        background: #4141d3;
+        border: solid 1px;
+        color: #fff;
+        padding: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        width: 100px;
+        text-align: center;
     }
 `;
 

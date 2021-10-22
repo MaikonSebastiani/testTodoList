@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { UseUserList } from '../../context/userList';
 

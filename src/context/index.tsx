@@ -1,9 +1,12 @@
 import React from 'react';
+import { UserContentProvider } from './userContent';
 import { UserListProvider } from './userList';
 
 const AppProvider: React.FC = ({ children }) => (
   <UserListProvider>
-    {children}
+    <UserContentProvider>
+      {children}
+    </UserContentProvider>
   </UserListProvider>
 );
 

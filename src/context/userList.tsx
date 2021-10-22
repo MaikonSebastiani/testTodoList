@@ -1,10 +1,9 @@
-import { promises } from 'fs';
 import React, {
   createContext, useContext, useCallback, useState,
 } from 'react';
 import api from '../services/api';
 
-export interface UserProps {
+export interface UserListProps {
     id: number,
     name: string,
     username: string,
@@ -12,22 +11,20 @@ export interface UserProps {
 }
 
 interface UserListContextData {
-    dataUserList: UserProps | undefined
+    dataUserList: UserListProps | undefined
     getUsers(): Promise<void>
 }
 
 const UserListContext = createContext<UserListContextData>({} as UserListContextData);
 
 const UserListProvider: React.FC = ({ children }) => {
-  const [users, setUsers] = useState<UserProps>();
+  const [users, setUsers] = useState<UserListProps>();
 
   const getUsers = useCallback(async () => {
-    const response = await api.get<UserProps>('users');
+    const response = await api.get<UserListProps>('users');
 
     setUsers(response.data);
   }, []);
-
-  console.log(users);
 
   return (
     <UserListContext.Provider value={{ dataUserList: users, getUsers }}>

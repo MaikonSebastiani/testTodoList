@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
-import { UserProps, UseUserList } from '../../context/userList';
+import React, { useCallback, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+
+import { UseUserList } from '../../context/userList';
 
 import { Container } from './styles';
 
 const UserList: React.FC = () => {
   const { getUsers } = UseUserList();
   const { dataUserList } = UseUserList();
+
+  const history = useHistory();
 
   useEffect(() => {
     getUsers();
@@ -14,10 +18,19 @@ const UserList: React.FC = () => {
   return (
     <Container>
       {dataUserList && Object.entries(dataUserList).map(([key, value]) => (
-        <p key={key}>
+
+        <button
+          type="button"
+          key={key}
+          onClick={() => {
+            localStorage.setItem('USER', value.username);
+            history.push(`todolist?userId=${value.id}`);
+          }}
+        >
           {value.username}
           <span>{value.email}</span>
-        </p>
+        </button>
+
       )) }
     </Container>
   );
